@@ -1,22 +1,18 @@
 import numpy as np
 from matplotlib.pyplot import show, legend
-
 from sysdata.csvdata import csvFuturesData
-from sysdata.configdata import Config
-
+from systems.account import Account
+from systems.basesystem import System
+from systems.forecast_combine import ForecastCombineEstimated
+from systems.forecast_scale_cap import ForecastScaleCapEstimated
 from systems.forecasting import Rules
 from systems.forecasting import TradingRule
-
-from systems.basesystem import System
-
-from systems.rawdata import RawData
-from systems.forecast_combine import ForecastCombineFixed, ForecastCombineEstimated
-from systems.forecast_scale_cap import ForecastScaleCapFixed, ForecastScaleCapEstimated
-from systems.positionsizing import PositionSizing
 from systems.portfolio import PortfoliosFixed
-from systems.account import Account
+from systems.positionsizing import PositionSizing
+from systems.rawdata import RawData
 
 from examples.regressionrule.tradingrule import regression_rule
+from pysystemtrade.sysdata.configdata import Config
 
 ## roughly one, two, three weeks; one... twelve months in business days
 
