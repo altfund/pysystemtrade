@@ -5,7 +5,7 @@ print(my_system)
 print(my_system.portfolio.get_notional_position("EDOLLAR").tail(5))
 
 from sysdata.csvdata import csvFuturesData
-from sysdata.configdata import Config
+from pysystemtrade.sysdata.configdata import Config
 """
 Now loading config and data
 """

@@ -1,24 +1,18 @@
 import numpy as np
-from matplotlib.pyplot import show
-
 from syscore.dateutils import BUSINESS_DAYS_IN_YEAR
-
 from sysdata.randomdata import RandomData
-from sysdata.configdata import Config
-
+from systems.account import Account
+from systems.basesystem import System
+from systems.forecast_combine import ForecastCombineEstimated
+from systems.forecast_scale_cap import ForecastScaleCapEstimated
 from systems.forecasting import Rules
 from systems.forecasting import TradingRule
-
-from systems.basesystem import System
-
-from systems.rawdata import RawData
-from systems.forecast_combine import ForecastCombineFixed, ForecastCombineEstimated
-from systems.forecast_scale_cap import ForecastScaleCapFixed, ForecastScaleCapEstimated
-from systems.positionsizing import PositionSizing
 from systems.portfolio import PortfoliosFixed
-from systems.account import Account
+from systems.positionsizing import PositionSizing
+from systems.rawdata import RawData
 
 from examples.regressionrule.tradingrule import regression_rule
+from pysystemtrade.sysdata.configdata import Config
 
 VOLS_TO_USE = [0.05]
 

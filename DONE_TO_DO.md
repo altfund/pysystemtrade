@@ -1,5 +1,9 @@
 # Release notes
 
+## Version 0.14.2
+* Move to proper packaging.
+* Refactor script created
+
 ## Version 0.14.1
 
 * Added progress bar (issue 51)

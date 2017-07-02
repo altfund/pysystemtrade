@@ -1,14 +1,9 @@
-from syscore.accounting import account_test
-
-from syscore.pdutils import turnover
-from sysdata.configdata import Config
-
-from systems.provided.futures_chapter15.estimatedsystem import futures_system
-from systems.provided.moretradingrules.morerules import breakout
-
 import pandas as pd
-import numpy as np
-from matplotlib.pyplot import show, legend, matshow
+from matplotlib.pyplot import show
+from syscore.accounting import account_test
+from systems.provided.futures_chapter15.estimatedsystem import futures_system
+
+from pysystemtrade.sysdata.configdata import Config
 
 bvariations = ["breakout" + str(ws) for ws in [10, 20, 40, 80, 160, 320]]
 evariations = [
