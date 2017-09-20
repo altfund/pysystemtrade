@@ -1,19 +1,14 @@
-from syscore.accounting import account_test
-
-from syscore.pdutils import turnover
-from sysdata.configdata import Config
-
-from systems.provided.futures_chapter15.estimatedsystem import futures_system
-from systems.provided.moretradingrules.morerules import breakout
-
 import pandas as pd
-import numpy as np
-from matplotlib.pyplot import show, legend, matshow
+from matplotlib.pyplot import show
+from syscore.accounting import account_test
+from systems.provided.futures_chapter15.estimatedsystem import futures_system
+
+from pysystemtrade.sysdata.configdata import Config
 
 bvariations = ["breakout" + str(ws) for ws in [10, 20, 40, 80, 160, 320]]
 evariations = [
-    "ewmac%d_%d" % (fast, fast * 4) for fast in [2, 4, 8, 16, 32, 64]]
-
+    "ewmac%d_%d" % (fast, fast * 4) for fast in [2, 4, 8, 16, 32, 64]
+]
 """
 my_config = Config("examples.breakout.breakoutfuturesestimateconfig.yaml")
 
@@ -26,8 +21,8 @@ show()
 
 lookback=250
 
-roll_max = pd.rolling_max(price, lookback, min_periods=min(len(price), np.ceil(lookback/2.0)))
-roll_min = pd.rolling_min(price, lookback, min_periods=min(len(price), np.ceil(lookback/2.0)))
+roll_max = price.rolling(lookback, min_periods=min(len(price), np.ceil(lookback/2.0))).max()
+roll_min = price.rolling(lookback, min_periods=min(len(price), np.ceil(lookback/2.0))).min()
 
 
 all=pd.concat([price, roll_max, roll_min], axis=1)
@@ -55,7 +50,7 @@ show()
 print(turnover(output, 10.0))
 
 smooth=int(250/4.0)
-smoothed_output = pd.ewma(output, span=smooth, min_periods=np.ceil(smooth/2.0))
+smoothed_output = output.ewm(span=smooth, min_periods=np.ceil(smooth/2.0)).mean()
 print(turnover(smoothed_output, 10.0))
 
 smoothed_output.plot()
@@ -231,7 +226,7 @@ show()
 
 my_config = Config("examples.breakout.breakoutfuturesestimateconfig.yaml")
 # will do all instruments we have data for
-del(my_config.instruments)
+del (my_config.instruments)
 
 # temporarily remove breakout rules
 my_config.rule_variations = evariations
@@ -242,7 +237,7 @@ system_old = futures_system(config=my_config, log_level="on")
 new_config = Config("examples.breakout.breakoutfuturesestimateconfig.yaml")
 new_config.rule_variations = bvariations
 new_config.forecast_weight_estimate["method"] = "equal_weights"
-del(new_config.instruments)
+del (new_config.instruments)
 
 system_new = futures_system(config=new_config, log_level="on")
 
@@ -253,7 +248,6 @@ print(curve1.stats())
 print(curve2.stats())
 
 print(account_test(curve2, curve1))
-
 
 curves_to_plot = pd.concat([curve1.as_df(), curve2.as_df()], axis=1)
 curves_to_plot.columns = ["ewmac", "breakout"]

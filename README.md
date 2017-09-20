@@ -7,10 +7,10 @@ Rob Carver
 [http://qoppac.blogspot.co.uk/p/pysystemtrade.html](http://qoppac.blogspot.co.uk/p/pysystemtrade.html)
 
 
-Version 0.12.0
+Version 0.14.1
 
 
-20160608
+20170509
 
 
 ## Release notes
@@ -56,11 +56,9 @@ This package isn't hosted on pip. So to get the code the easiest way is to use g
 
 ```
 git clone https://github.com/robcarver17/pysystemtrade.git
+python3 setup.py develop
 ```
-
-A setup.py file is provided, however as the installation is trivial this shouldn't be neccessary. Just add the relevant ibsystemtrade directory to the path that python searches in, and off you go.
-
-
+Notice that develop mode is required so that ipython sessions can see files inside subdirectories which would otherwise be inaccessible.
 
 ### A note on support
 
@@ -69,10 +67,16 @@ This is an open source project, designed for people who are already comfortable 
 - Confusing error messages
 - Missing or misleading documentation
 - Suggestions for extra features
+ 
+However I can't guarantee that I will reply immediately, or at all. If you need that level of support then you are better off with another project. The most efficient way of doing this is by [opening an issue on github](https://github.com/robcarver17/pysystemtrade/issues/new). If you discover a bug please include:
 
-However I can't guarantee that I will reply immediately, or at all. If you need that level of support then you are better off with another project. The most efficient way of doing this is by [opening an issue on github](https://github.com/robcarver17/pysystemtrade/issues/new).
+- The full script that produces the error, including all `import` statements, or if it's a standard example file a pointer to the file. Ideally this should be a "minimal example" - the shortest possible script that produces the problem.
+- Versions of any neccessary libraries you have installed
+- The full output trace including the error messages
 
-I'll try and incorporate any feedback into the code, but this is a part time venture for me, and it will be competing with my other interests (writing books, blogging and research). But if you occasionally check github you will hopefully find it gradually improving. Offers to contribute will of course be gratefully accepted.
+If you don't include the information above I will close the issue and then ignore it.
+
+I'll try and incorporate any feedback into the code, but this is a part time (and unpaid!) venture for me, and it will be competing with my other interests (writing books, blogging and research). But if you occasionally check github you will hopefully find it gradually improving. Offers to contribute will of course be gratefully accepted.
 
 
 ## Licensing and legal stuff
